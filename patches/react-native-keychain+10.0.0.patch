@@ -1,0 +1,68 @@
+diff --git a/node_modules/react-native-keychain/android/src/main/java/com/oblador/keychain/cipherStorage/CipherStorageKeystoreAesGcm.kt b/node_modules/react-native-keychain/android/src/main/java/com/oblador/keychain/cipherStorage/CipherStorageKeystoreAesGcm.kt
+index 6b6e626..515ea8f 100644
+--- a/node_modules/react-native-keychain/android/src/main/java/com/oblador/keychain/cipherStorage/CipherStorageKeystoreAesGcm.kt
++++ b/node_modules/react-native-keychain/android/src/main/java/com/oblador/keychain/cipherStorage/CipherStorageKeystoreAesGcm.kt
+@@ -158,7 +158,8 @@ class CipherStorageKeystoreAesGcm(
+     ): KeyGenParameterSpec.Builder {
+         val purposes = KeyProperties.PURPOSE_DECRYPT or KeyProperties.PURPOSE_ENCRYPT
+ 
+-        val validityDuration = 5
++        // 0 = require auth on every decrypt (no reuse of post-auth window).
++        val validityDuration = 0
+         val keyGenParameterSpecBuilder =
+             KeyGenParameterSpec.Builder(alias, purposes).setBlockModes(BLOCK_MODE_GCM)
+                 .setEncryptionPaddings(PADDING_NONE).setRandomizedEncryptionRequired(true)
+@@ -166,15 +167,13 @@ class CipherStorageKeystoreAesGcm(
+ 
+         if (requiresAuth) {
+             keyGenParameterSpecBuilder.setUserAuthenticationRequired(true)
+-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+-                keyGenParameterSpecBuilder.setUserAuthenticationParameters(
+-                    validityDuration,
+-                    KeyProperties.AUTH_BIOMETRIC_STRONG or KeyProperties.AUTH_DEVICE_CREDENTIAL
+-                )
+-            } else {
+-                keyGenParameterSpecBuilder.setUserAuthenticationValidityDurationSeconds(
+-                    validityDuration
+-                )
++            @Suppress("DEPRECATION")
++            keyGenParameterSpecBuilder.setUserAuthenticationValidityDurationSeconds(
++                validityDuration
++            )
++            // Align with iOS kSecAccessControlTouchIDCurrentSet: invalidate when fingerprints/Face change.
++            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
++                keyGenParameterSpecBuilder.setInvalidatedByBiometricEnrollment(true)
+             }
+         }
+ 
+diff --git a/node_modules/react-native-keychain/android/src/main/java/com/oblador/keychain/cipherStorage/CipherStorageKeystoreRsaEcb.kt b/node_modules/react-native-keychain/android/src/main/java/com/oblador/keychain/cipherStorage/CipherStorageKeystoreRsaEcb.kt
+index fc8ebf1..0a8192c 100644
+--- a/node_modules/react-native-keychain/android/src/main/java/com/oblador/keychain/cipherStorage/CipherStorageKeystoreRsaEcb.kt
++++ b/node_modules/react-native-keychain/android/src/main/java/com/oblador/keychain/cipherStorage/CipherStorageKeystoreRsaEcb.kt
+@@ -182,7 +182,7 @@ class CipherStorageKeystoreRsaEcb(reactContext: ReactApplicationContext) :
+ 
+         val keySize = ENCRYPTION_KEY_SIZE
+ 
+-        val validityDuration = 5
++        val validityDuration = 0
+         val keyGenParameterSpecBuilder =
+             KeyGenParameterSpec.Builder(alias, purposes)
+                 .setBlockModes(BLOCK_MODE_ECB)
+@@ -191,13 +191,10 @@ class CipherStorageKeystoreRsaEcb(reactContext: ReactApplicationContext) :
+                 .setUserAuthenticationRequired(true)
+                 .setKeySize(keySize)
+ 
+-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+-            keyGenParameterSpecBuilder.setUserAuthenticationParameters(
+-                validityDuration,
+-                KeyProperties.AUTH_BIOMETRIC_STRONG or KeyProperties.AUTH_DEVICE_CREDENTIAL
+-            )
+-        } else {
+-            keyGenParameterSpecBuilder.setUserAuthenticationValidityDurationSeconds(validityDuration)
++        @Suppress("DEPRECATION")
++        keyGenParameterSpecBuilder.setUserAuthenticationValidityDurationSeconds(validityDuration)
++        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
++            keyGenParameterSpecBuilder.setInvalidatedByBiometricEnrollment(true)
+         }
+ 
+         return keyGenParameterSpecBuilder

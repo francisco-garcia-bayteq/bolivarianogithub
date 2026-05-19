@@ -1,0 +1,22 @@
+# Posición consolidada
+
+## Descripción
+<div><p style="margin:0cm 0cm 8pt;font-size:11pt;font-family:Aptos, sans-serif;"><b><span lang=ES-EC style="font-size:12.0pt;line-height:107%;">Como</span></b><span lang=ES-EC style="font-size:12.0pt;">
+cliente de los canales digitales <b>necesito</b> disponer de una pantalla que
+me permita acceder a todos mis productos que tengo con el banco <b>para</b> así
+poder consultarlos cuando lo necesite.</span><span lang=ES-EC></span> </p><br> </div>
+
+## Criterios de aceptación
+<div><p style="margin:0cm 0cm 8pt;font-size:11pt;font-family:Aptos, sans-serif;"><span lang=ES-EC style="font-size:12.0pt;">Para
+que la historia se de por aceptada debe cumplir con los siguientes puntos:</span> </p><p style="margin:0cm 0cm 8pt;font-size:11pt;font-family:Aptos, sans-serif;"><b><u><span lang=ES-EC style="font-size:12.0pt;line-height:107%;">Escenario: Pantalla de Posición consolidada</span></u></b> </p><ul style="margin-bottom:0cm;"><li><span lang=ES-EC style="font-size:12.0pt;">Luego de iniciar sesión, se debe presentar la pantalla de la
+posición consolidada, la cual tendría lo siguiente:</span> </li><ul style="margin-bottom:0cm;"><li><span lang=ES-EC style="font-size:12.0pt;">sección Mis Productos, en
+donde se mostrarán los productos que tiene el cliente asociados.</span> </li><li><span lang=ES-EC style="font-size:12.0pt;">Sección Solicitar
+Productos</span> </li><li><span lang=ES-EC style="font-size:12.0pt;">Banners de productos o
+servicios que ofrece el banco</span> </li><li><span lang=ES-EC style="font-size:12.0pt;">Barra de navegación</span> </li> </ul> </ul><p style="margin:0cm 0cm 8pt;font-size:11pt;font-family:Aptos, sans-serif;"><b><u><span lang=ES-EC style="font-size:12.0pt;line-height:107%;"></span></u></b> </p><p style="margin:0cm 0cm 8pt;font-size:11pt;font-family:Aptos, sans-serif;"><b><u><span lang=ES-EC style="font-size:12.0pt;line-height:107%;">Escenario: Sección Mis productos</span></u></b> </p><ul style="margin-bottom:0cm;"><li><span lang=ES-EC style="font-size:12.0pt;">Los productos que puede tener disponible en esta sección son:</span> </li><ul style="margin-bottom:0cm;"><li><span lang=ES-EC style="font-size:12.0pt;">Cuentas</span> </li><li><span lang=ES-EC style="font-size:12.0pt;">Tarjetas</span> </li><li><span lang=ES-EC style="font-size:12.0pt;">Inversiones</span> </li><li><span lang=ES-EC style="font-size:12.0pt;">Prestamos</span> </li> </ul><li><span lang=ES-EC style="font-size:12.0pt;">Se debe tener en cuenta que el cliente no tendrá todos los
+productos, es decir, por ejemplo, puede tener 1 de ellos como cuentas o
+tarjetas; así como varios productos como: cuentas, tarjetas e inversiones.</span> </li><li><span lang=ES-EC style="font-size:12.0pt;">Al dar clic sobre cada producto, será direccionado a la
+pantalla que me de información del producto.</span> </li> </ul><p style="margin:0cm 0cm 8pt 36pt;font-size:11pt;font-family:Aptos, sans-serif;margin-left:18.0pt;"><span lang=ES-EC style="font-size:12.0pt;">&nbsp;</span> </p><p style="margin:0cm 0cm 8pt;font-size:11pt;font-family:Aptos, sans-serif;"><b><u><span lang=ES-EC style="font-size:12.0pt;line-height:107%;">Escenario: Barra de Navegación</span></u></b> </p><ul style="margin-bottom:0cm;"><li><span lang=ES-EC style="font-size:12.0pt;">Se debe disponer de una barra de navegación que tendrá las
+principales transacciones o las mas relevantes para que el cliente las tenga de
+primera mano.</span> </li> </ul><p style="margin:0cm 0cm 8pt;font-size:11pt;font-family:Aptos, sans-serif;"><b><u><span lang=ES-EC style="font-size:12.0pt;line-height:107%;"></span></u></b> </p><b><u><span lang=ES-EC style="font-size:12.0pt;font-family:&quot;Aptos&quot;,sans-serif;"><br style="page-break-before:always;"></span></u></b><p style="margin:0cm 0cm 8pt;font-size:11pt;font-family:Aptos, sans-serif;"><b><u><span lang=ES-EC style="font-size:12.0pt;line-height:107%;"></span></u></b> </p><p style="margin:0cm 0cm 8pt;font-size:11pt;font-family:Aptos, sans-serif;"><b><u><span lang=ES-EC style="font-size:12.0pt;line-height:107%;">Escenario: Compatibilidad entre plataformas.</span></u></b> </p><ul style="margin-bottom:0cm;"><li><span lang=ES-EC style="font-size:12.0pt;">Esta funcionalidad debe ser la misma en ambas plataformas.</span> </li><ul style="margin-bottom:0cm;"><li><span lang=ES-EC style="font-size:12.0pt;">Validar en dispositivo IOS</span> </li><li><span lang=ES-EC style="font-size:12.0pt;">Validar en dispositivo
+Android</span> </li> </ul> </ul><br> </div>
+

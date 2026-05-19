@@ -1,0 +1,350 @@
+<html>
+  <head>
+    <title>Maestro Test Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="card mb-4">
+      <div class="card-body">
+        <h1 class="mt-5 text-center">Flow Execution Summary</h1>
+<br>Test Result: FAILED<br>Duration: 3s<br>Start Time: null<br><br>
+        <div class="card-group mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title text-center">Total number of Flows</h5>
+              <h3 class="card-text text-center">14</h3>
+            </div>
+          </div>
+          <div class="card text-white bg-danger">
+            <div class="card-body">
+              <h5 class="card-title text-center">Failed Flows</h5>
+              <h3 class="card-text text-center">14</h3>
+            </div>
+          </div>
+          <div class="card text-white bg-success">
+            <div class="card-body">
+              <h5 class="card-title text-center">Successful Flows</h5>
+              <h3 class="card-text text-center">0</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card border-danger mb-3">
+          <div class="card-body text-danger"><b>Failed Flow</b><br>
+            <p class="card-text">Primer login — Usuario01_2026, OTP 123457, oferta biométrica omitida<br>Credenciales válidas abren la pantalla de PIN (OTP)<br>Login fallido con credenciales inválidas<br>PIN incorrecto muestra error en pantalla OTP<br>Login exitoso — llega al inicio con saldo y movimientos<br>Login — Validación de campos<br>Logout y retorno a pantalla de login<br>Tras reinicio — login obligatorio (sin restaurar sesión)<br>Lista de transacciones y estados visibles<br>Transferencia completa — formulario, revisión, OTP y éxito<br>Transferencias — revisión detallada (monto, beneficiario, concepto, acciones)<br>Transferencias — formulario hasta pantalla de revisión<br>Transferencias — validación al continuar sin datos<br>Transferencia completa — formulario, revisión, OTP, modal de éxito y comprobante<br></p>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-0-Primer-login---Usuario01_2026--OTP-123457--oferta-biom-trica-omitida" aria-expanded="false" aria-controls="flow-0-Primer-login---Usuario01_2026--OTP-123457--oferta-biom-trica-omitida">Primer login — Usuario01_2026, OTP 123457, oferta biométrica omitida : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-0-Primer-login---Usuario01_2026--OTP-123457--oferta-biom-trica-omitida">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 1s<br>Start Time: null<br>File Name: 00-login-first-usuario01<br></p>
+              <p class="card-text text-danger">Unable to launch app com.bbapp</p>
+              <h6 class="mt-3 mb-3">Test Steps (3)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">1. Launch app &quot;com.bbapp&quot;</span></span><span class="badge bg-light text-dark">150ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">2. Define variables</span></span><span class="badge bg-light text-dark">3ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">3. Apply configuration</span></span><span class="badge bg-light text-dark">1ms</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-1-Credenciales-v-lidas-abren-la-pantalla-de-PIN--OTP-" aria-expanded="false" aria-controls="flow-1-Credenciales-v-lidas-abren-la-pantalla-de-PIN--OTP-">Credenciales válidas abren la pantalla de PIN (OTP) : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-1-Credenciales-v-lidas-abren-la-pantalla-de-PIN--OTP-">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 1s<br>Start Time: null<br>File Name: login-credentials-opens-otp<br></p>
+              <p class="card-text text-danger">Unable to launch app com.bbapp</p>
+              <h6 class="mt-3 mb-3">Test Steps (3)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">1. Define variables</span></span><span class="badge bg-light text-dark">1ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">2. Launch app &quot;com.bbapp&quot;</span></span><span class="badge bg-light text-dark">377ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">3. Apply configuration</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-2-Login-fallido-con-credenciales-inv-lidas" aria-expanded="false" aria-controls="flow-2-Login-fallido-con-credenciales-inv-lidas">Login fallido con credenciales inválidas : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-2-Login-fallido-con-credenciales-inv-lidas">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 1s<br>Start Time: null<br>File Name: login-invalid-credentials<br></p>
+              <p class="card-text text-danger">Unable to launch app com.bbapp</p>
+              <h6 class="mt-3 mb-3">Test Steps (3)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">1. Define variables</span></span><span class="badge bg-light text-dark">1ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">2. Launch app &quot;com.bbapp&quot;</span></span><span class="badge bg-light text-dark">609ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">3. Apply configuration</span></span><span class="badge bg-light text-dark">1ms</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-3-PIN-incorrecto-muestra-error-en-pantalla-OTP" aria-expanded="false" aria-controls="flow-3-PIN-incorrecto-muestra-error-en-pantalla-OTP">PIN incorrecto muestra error en pantalla OTP : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-3-PIN-incorrecto-muestra-error-en-pantalla-OTP">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 0s<br>Start Time: null<br>File Name: login-otp-invalid<br></p>
+              <p class="card-text text-danger">Unable to launch app com.bbapp</p>
+              <h6 class="mt-3 mb-3">Test Steps (3)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">1. Define variables</span></span><span class="badge bg-light text-dark">1ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">2. Apply configuration</span></span><span class="badge bg-light text-dark">2ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">3. Launch app &quot;com.bbapp&quot;</span></span><span class="badge bg-light text-dark">181ms</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-4-Login-exitoso---llega-al-inicio-con-saldo-y-movimientos" aria-expanded="false" aria-controls="flow-4-Login-exitoso---llega-al-inicio-con-saldo-y-movimientos">Login exitoso — llega al inicio con saldo y movimientos : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-4-Login-exitoso---llega-al-inicio-con-saldo-y-movimientos">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 0s<br>Start Time: null<br>File Name: login-success<br></p>
+              <p class="card-text text-danger">Unable to launch app com.bbapp</p>
+              <h6 class="mt-3 mb-3">Test Steps (3)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">1. Launch app &quot;com.bbapp&quot;</span></span><span class="badge bg-light text-dark">162ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">2. Define variables</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">3. Apply configuration</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-5-Login---Validaci-n-de-campos" aria-expanded="false" aria-controls="flow-5-Login---Validaci-n-de-campos">Login — Validación de campos : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-5-Login---Validaci-n-de-campos">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 0s<br>Start Time: null<br>File Name: login-validation-fields<br></p>
+              <p class="card-text text-danger">Unable to launch app com.bbapp</p>
+              <h6 class="mt-3 mb-3">Test Steps (3)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">1. Define variables</span></span><span class="badge bg-light text-dark">1ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">2. Apply configuration</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">3. Launch app &quot;com.bbapp&quot;</span></span><span class="badge bg-light text-dark">116ms</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-6-Logout-y-retorno-a-pantalla-de-login" aria-expanded="false" aria-controls="flow-6-Logout-y-retorno-a-pantalla-de-login">Logout y retorno a pantalla de login : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-6-Logout-y-retorno-a-pantalla-de-login">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 0s<br>Start Time: null<br>File Name: logout<br></p>
+              <p class="card-text text-danger">Unable to launch app com.bbapp</p>
+              <h6 class="mt-3 mb-3">Test Steps (3)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">1. Define variables</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">2. Launch app &quot;com.bbapp&quot;</span></span><span class="badge bg-light text-dark">104ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">3. Apply configuration</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-7-Tras-reinicio---login-obligatorio--sin-restaurar-sesi-n-" aria-expanded="false" aria-controls="flow-7-Tras-reinicio---login-obligatorio--sin-restaurar-sesi-n-">Tras reinicio — login obligatorio (sin restaurar sesión) : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-7-Tras-reinicio---login-obligatorio--sin-restaurar-sesi-n-">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 0s<br>Start Time: null<br>File Name: session-persisted-relaunch<br></p>
+              <p class="card-text text-danger">Unable to launch app com.bbapp</p>
+              <h6 class="mt-3 mb-3">Test Steps (3)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">1. Apply configuration</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">2. Define variables</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">3. Launch app &quot;com.bbapp&quot;</span></span><span class="badge bg-light text-dark">89ms</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-8-Lista-de-transacciones-y-estados-visibles" aria-expanded="false" aria-controls="flow-8-Lista-de-transacciones-y-estados-visibles">Lista de transacciones y estados visibles : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-8-Lista-de-transacciones-y-estados-visibles">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 0s<br>Start Time: null<br>File Name: transactions-list-visible<br></p>
+              <p class="card-text text-danger">Unable to launch app com.bbapp</p>
+              <h6 class="mt-3 mb-3">Test Steps (3)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">1. Apply configuration</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">2. Define variables</span></span><span class="badge bg-light text-dark">1ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">3. Launch app &quot;com.bbapp&quot;</span></span><span class="badge bg-light text-dark">90ms</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-9-Transferencia-completa---formulario--revisi-n--OTP-y--xito" aria-expanded="false" aria-controls="flow-9-Transferencia-completa---formulario--revisi-n--OTP-y--xito">Transferencia completa — formulario, revisión, OTP y éxito : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-9-Transferencia-completa---formulario--revisi-n--OTP-y--xito">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 0s<br>Start Time: null<br>File Name: transfer-complete-with-otp<br></p>
+              <p class="card-text text-danger">Unable to launch app com.bbapp</p>
+              <h6 class="mt-3 mb-3">Test Steps (3)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">1. Define variables</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">2. Apply configuration</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">3. Launch app &quot;com.bbapp&quot;</span></span><span class="badge bg-light text-dark">94ms</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-10-Transferencias---revisi-n-detallada--monto--beneficiario--concepto--acciones-" aria-expanded="false" aria-controls="flow-10-Transferencias---revisi-n-detallada--monto--beneficiario--concepto--acciones-">Transferencias — revisión detallada (monto, beneficiario, concepto, acciones) : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-10-Transferencias---revisi-n-detallada--monto--beneficiario--concepto--acciones-">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 0s<br>Start Time: null<br>File Name: transfer-review-detail<br></p>
+              <p class="card-text text-danger">Unable to launch app com.bbapp</p>
+              <h6 class="mt-3 mb-3">Test Steps (3)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">1. Launch app &quot;com.bbapp&quot;</span></span><span class="badge bg-light text-dark">105ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">2. Define variables</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">3. Apply configuration</span></span><span class="badge bg-light text-dark">1ms</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-11-Transferencias---formulario-hasta-pantalla-de-revisi-n" aria-expanded="false" aria-controls="flow-11-Transferencias---formulario-hasta-pantalla-de-revisi-n">Transferencias — formulario hasta pantalla de revisión : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-11-Transferencias---formulario-hasta-pantalla-de-revisi-n">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 0s<br>Start Time: null<br>File Name: transfer-to-review-screen<br></p>
+              <p class="card-text text-danger">Unable to launch app com.bbapp</p>
+              <h6 class="mt-3 mb-3">Test Steps (3)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">1. Launch app &quot;com.bbapp&quot;</span></span><span class="badge bg-light text-dark">97ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">2. Apply configuration</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">3. Define variables</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-12-Transferencias---validaci-n-al-continuar-sin-datos" aria-expanded="false" aria-controls="flow-12-Transferencias---validaci-n-al-continuar-sin-datos">Transferencias — validación al continuar sin datos : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-12-Transferencias---validaci-n-al-continuar-sin-datos">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 0s<br>Start Time: null<br>File Name: transfer-validation-messages<br></p>
+              <p class="card-text text-danger">Unable to launch app com.bbapp</p>
+              <h6 class="mt-3 mb-3">Test Steps (3)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">1. Launch app &quot;com.bbapp&quot;</span></span><span class="badge bg-light text-dark">104ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">2. Apply configuration</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">3. Define variables</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-13-Transferencia-completa---formulario--revisi-n--OTP--modal-de--xito-y-comprobante" aria-expanded="false" aria-controls="flow-13-Transferencia-completa---formulario--revisi-n--OTP--modal-de--xito-y-comprobante">Transferencia completa — formulario, revisión, OTP, modal de éxito y comprobante : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-13-Transferencia-completa---formulario--revisi-n--OTP--modal-de--xito-y-comprobante">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 0s<br>Start Time: null<br>File Name: transfer-voucher<br></p>
+              <p class="card-text text-danger">Unable to launch app com.bbapp</p>
+              <h6 class="mt-3 mb-3">Test Steps (3)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">1. Launch app &quot;com.bbapp&quot;</span></span><span class="badge bg-light text-dark">94ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">2. Define variables</span></span><span class="badge bg-light text-dark">1ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">3. Apply configuration</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>.step-item {
+    border-left: 3px solid #dee2e6;
+    padding-left: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.step-header {
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.step-name {
+    font-weight: 500;
+}
+</style>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    </div>
+  </body>
+</html>

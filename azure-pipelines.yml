@@ -1,0 +1,32 @@
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'macos-latest'
+
+stages:
+- stage: CI
+  displayName: Build and Analyze
+
+  jobs:
+  - job: Build
+
+    steps:
+    - checkout: self
+
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '18.x'
+
+    - script: npm install
+      displayName: Install dependencies
+
+    - script: npm test -- --coverage
+      displayName: Run tests
+      continueOnError: true
+
+    - script: |
+        cd android
+        chmod +x gradlew
+        ./gradlew bundleRelease
+      displayName: Build Android
