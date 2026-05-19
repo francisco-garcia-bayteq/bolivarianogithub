@@ -25,31 +25,12 @@ export interface NavigatePostLoginEnrollmentOptions {
  * (biometría existente, declinación previa u oferta biométrica).
  */
 export async function navigatePostLoginEnrollment(
-  navigation: NativeStackNavigationProp<RootStackParamList>,
+  _navigation: NativeStackNavigationProp<RootStackParamList>,
   user: User,
-  email: string,
+  _email: string,
   deps: PostLoginEnrollmentDeps,
-  options?: NavigatePostLoginEnrollmentOptions,
+  _options?: NavigatePostLoginEnrollmentOptions,
 ): Promise<void> {
-  const {biometricRSAAuthOrchestrator, secureStorageService, login} = deps;
-  if (!options?.forceShowBiometricOffer) {
-    let hasBio = false;
-    try {
-      hasBio = await biometricRSAAuthOrchestrator.hasBiometricRegistration();
-    } catch {
-      hasBio = false;
-    }
-    if (hasBio) {
-      await login(user);
-      return;
-    }
-  }
-  const declined = await secureStorageService.get(
-    SecureStorageKeys.BIOMETRIC_OFFER_DECLINED,
-  );
-  if (declined === 'true') {
-    await login(user);
-    return;
-  }
-  navigation.replace('BiometricOffer', {user, email});
+  const {login} = deps;
+  await login(user);
 }
