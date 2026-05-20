@@ -9,8 +9,7 @@ import React, {
 import {View, StyleSheet, Alert, ActivityIndicator, AppState} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-controller';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {useFocusEffect, useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useFocusEffect} from '@react-navigation/native';
 import {
   useLoginViewModel,
   BIOMETRIC_ENROLLMENT_CHANGED_MESSAGE,
@@ -21,11 +20,8 @@ import {SecureStorageKeys} from '../../data/datasources/storage/SecureStorageKey
 import {useAuth} from '../../providers';
 import {useDI} from '../../di';
 import {useTheme, type ThemeColors} from '../../providers';
-import {RootStackParamList} from '../../navigation/AppNavigator.tsx';
 
 export function LoginScreen() {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const {login, suppressCompactAutoBiometricGeneration} = useAuth();
   const [suppressAutoBiometricPromptOnce, setSuppressAutoBiometricPromptOnce] =
     useState(false);
@@ -113,9 +109,7 @@ export function LoginScreen() {
     };
   }, [loadBiometricAvailability, loadDeviceBoundProfile]);
 
-  const isDeviceBoundCredentialsFlow =
-    deviceBoundLoginId !== null && deviceBoundLoginId.length > 0;
-    const deviceBoundParam =
+  const deviceBoundParam =
     deviceBoundLoginId ? { deviceBoundLoginId } : undefined;
   const {
     email,
@@ -138,14 +132,7 @@ export function LoginScreen() {
   } = useLoginViewModel(
     
     user => {
-      navigation.navigate('OtpValidation', {
-        mode: 'login',
-        user,
-        email: user.email,
-        ...(isDeviceBoundCredentialsFlow || user.alias !== undefined
-          ? {skipRegisterAlias: true}
-          : {}),
-      });
+      login(user).catch();
     },
     user => {
       login(user).catch();

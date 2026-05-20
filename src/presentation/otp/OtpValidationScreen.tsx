@@ -14,40 +14,31 @@ import {
 import {RouteProp, StackActions, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-import {useTheme, type ThemeColors, useAuth} from '../../providers';
-import {useDI} from '../../di';
+import {useTheme, type ThemeColors} from '../../providers';
 import {ErrorMessage, OtpCodeInput} from '../components';
 import {Lexend} from '../../theme/lexend';
 import {useOtpValidationViewModel} from './useOtpValidationViewModel';
-import {RootStackParamList} from '../../navigation/AppNavigator.tsx';
 import type {TransferStackParamList} from '../../features/transfer/navigation/TransferStackNavigator';
-import {navigatePostLoginEnrollment} from '../auth/navigatePostLoginEnrollment';
 
 const otpBackArrow = require('../../../assets/images/arrow-left.png');
 const otpLockOpen = require('../../../assets/images/lock-keyhole-open.png');
-const otpShield = require('../../../assets/images/otp-lock.png');
-const otpClock = require('../../../assets/images/clock-rotate-left.png');
 
-type OTPScreenRouteProp =
-  | RouteProp<RootStackParamList, 'OtpValidation'>
-  | RouteProp<TransferStackParamList, 'OtpValidationTransfer'>;
+type OTPScreenRouteProp = RouteProp<
+  TransferStackParamList,
+  'OtpValidationTransfer'
+>;
 
 interface OTPScreenComponentProps {
   route: OTPScreenRouteProp;
 }
 
 export function OtpValidationScreen({
-  route,
+  route: _route,
 }: Readonly<OTPScreenComponentProps>) {
   const {colors} = useTheme();
-  const params = route.params;
-  const isLogin = params.mode === 'login';
-  const styles = useStyles(colors, isLogin ? 'login' : 'transfer');
-  const navigation = useNavigation<
-    NativeStackNavigationProp<RootStackParamList | TransferStackParamList>
-  >();
-  const {login} = useAuth();
-  const {biometricRSAAuthOrchestrator, secureStorageService} = useDI();
+  const styles = useStyles(colors);
+  const navigation =
+    useNavigation<NativeStackNavigationProp<TransferStackParamList>>();
 
   const {
     code,
@@ -55,39 +46,17 @@ export function OtpValidationScreen({
     isLoading,
     onChangeCode,
     handleValidate,
-    canResend,
-    showResendControl,
-    formattedCountdown,
-    handleResend,
   } = useOtpValidationViewModel(
     async () => {
-      if (params.mode === 'login') {
-        const rootNav = navigation as NativeStackNavigationProp<RootStackParamList>;
-        if (params.skipRegisterAlias) {
-          await navigatePostLoginEnrollment(rootNav, params.user, params.email, {
-            biometricRSAAuthOrchestrator,
-            secureStorageService,
-            login,
-          });
-        } else {
-          rootNav.navigate('RegisterAlias', {
-            user: params.user,
-            email: params.email,
-          });
-        }
-        return;
-      }
-      if (params.mode === 'transfer') {
-        navigation.dispatch(
-          StackActions.popTo(
-            'TransferReview',
-            {resultFromOtp: {otpValidated: true}},
-            {merge: true},
-          ),
-        );
-      }
+      navigation.dispatch(
+        StackActions.popTo(
+          'TransferReview',
+          {resultFromOtp: {otpValidated: true}},
+          {merge: true},
+        ),
+      );
     },
-    {flow: isLogin ? 'login' : 'transfer'},
+    {flow: 'transfer'},
   );
 
   const lastSubmitted = useRef<string | null>(null);
@@ -129,7 +98,7 @@ export function OtpValidationScreen({
     );
   };
 
-  const headerTitle = isLogin ? 'ENROLAMIENTO' : 'AUTENTICACIÓN';
+  const headerTitle = 'AUTENTICACIÓN';
 
   return (
     <SafeAreaView
@@ -158,118 +127,42 @@ export function OtpValidationScreen({
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}>
-        {isLogin ? (
-          <>
-            <Text style={styles.sectionTitle}>Verificación de seguridad</Text>
-            <Image
-              source={otpShield}
-              style={styles.shieldIcon}
-              resizeMode="contain"
-              accessibilityIgnoresInvertColors
-              accessibilityLabel="Verificación de seguridad"
-            />
-            <Text style={styles.loginBody}>
-              Enviamos un código de verificación de 6 dígitos a tu celular
-              terminado en <Text style={styles.loginBodyLastDigits}>****458</Text>.
-            </Text>
-            <Pressable
-              style={styles.pinInputWrap}
-              onPress={() => otpInputRef.current?.focus()}
-              accessibilityRole="none"
-              accessibilityHint="Abre el teclado para ingresar el código">
-              <OtpCodeInput
-                value={code}
-                hasError={!!error}
-                disabled={isLoading}
-                length={6}
-                variant="boxed"
-              />
-              <TextInput
-                ref={otpInputRef}
-                testID="otp-input"
-                value={code}
-                onChangeText={handleOtpTextChange}
-                keyboardType="number-pad"
-                inputMode="numeric"
-                maxLength={6}
-                editable={!isLoading}
-                caretHidden
-                style={styles.hiddenOtpInput}
-                accessibilityLabel="Código de verificación de 6 dígitos"
-                textContentType="oneTimeCode"
-                autoComplete="sms-otp"
-                importantForAutofill="yes"
-              />
-            </Pressable>
-            <View style={styles.timerRow}>
-              <Image
-                source={otpClock}
-                style={styles.timerIcon}
-                resizeMode="contain"
-                accessibilityIgnoresInvertColors
-              />
-              <Text style={styles.timerText}>
-                El código expira en: {formattedCountdown}
-              </Text>
-            </View>
-            {showResendControl ? (
-              <Pressable
-                onPress={() => handleResend()}
-                disabled={!canResend}
-                style={styles.resendWrap}
-                accessibilityRole="button"
-                accessibilityState={{disabled: !canResend}}
-                accessibilityLabel="Reenviar código">
-                <Text
-                  style={[
-                    styles.resendLabel,
-                    canResend ? styles.resendLabelEnabled : styles.resendLabelDisabled,
-                  ]}>
-                  Reenviar código
-                </Text>
-              </Pressable>
-            ) : null}
-          </>
-        ) : (
-          <>
-            <Text style={styles.instruction}>
-              Introduce tu PIN para continuar
-            </Text>
-            <Image
-              source={otpLockOpen}
-              style={styles.padlock}
-              resizeMode="contain"
-              accessibilityIgnoresInvertColors
-              accessibilityLabel="Candado abierto"
-            />
-            <Pressable
-              style={styles.pinInputWrap}
-              onPress={() => otpInputRef.current?.focus()}
-              accessibilityRole="none"
-              accessibilityHint="Abre el teclado para ingresar el PIN">
-              <OtpCodeInput
-                value={code}
-                hasError={!!error}
-                disabled={isLoading}
-                length={6}
-              />
-              <TextInput
-                ref={otpInputRef}
-                testID="otp-input"
-                value={code}
-                onChangeText={handleOtpTextChange}
-                keyboardType="number-pad"
-                inputMode="numeric"
-                maxLength={6}
-                editable={!isLoading}
-                caretHidden
-                style={styles.hiddenOtpInput}
-                accessibilityLabel="PIN de 6 dígitos"
-                textContentType="oneTimeCode"
-              />
-            </Pressable>
-          </>
-        )}
+        <Text style={styles.instruction}>
+          Introduce tu PIN para continuar
+        </Text>
+        <Image
+          source={otpLockOpen}
+          style={styles.padlock}
+          resizeMode="contain"
+          accessibilityIgnoresInvertColors
+          accessibilityLabel="Candado abierto"
+        />
+        <Pressable
+          style={styles.pinInputWrap}
+          onPress={() => otpInputRef.current?.focus()}
+          accessibilityRole="none"
+          accessibilityHint="Abre el teclado para ingresar el PIN">
+          <OtpCodeInput
+            value={code}
+            hasError={!!error}
+            disabled={isLoading}
+            length={6}
+          />
+          <TextInput
+            ref={otpInputRef}
+            testID="otp-input"
+            value={code}
+            onChangeText={handleOtpTextChange}
+            keyboardType="number-pad"
+            inputMode="numeric"
+            maxLength={6}
+            editable={!isLoading}
+            caretHidden
+            style={styles.hiddenOtpInput}
+            accessibilityLabel="PIN de 6 dígitos"
+            textContentType="oneTimeCode"
+          />
+        </Pressable>
 
         {error ? (
           <ErrorMessage
@@ -278,21 +171,19 @@ export function OtpValidationScreen({
             style={styles.error}
           />
         ) : null}
-        {params.mode === 'transfer' ? (
-          <TouchableOpacity
-            onPress={handleForgotPin}
-            activeOpacity={0.8}
-            style={styles.forgotWrap}
-            accessibilityRole="button">
-            <Text style={styles.forgotText}>¿Olvidaste tu PIN?</Text>
-          </TouchableOpacity>
-        ) : null}
+        <TouchableOpacity
+          onPress={handleForgotPin}
+          activeOpacity={0.8}
+          style={styles.forgotWrap}
+          accessibilityRole="button">
+          <Text style={styles.forgotText}>¿Olvidaste tu PIN?</Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-function useStyles(colors: ThemeColors, layout: 'login' | 'transfer') {
+function useStyles(colors: ThemeColors) {
   return useMemo(
     () =>
       StyleSheet.create({
@@ -321,62 +212,16 @@ function useStyles(colors: ThemeColors, layout: 'login' | 'transfer') {
           lineHeight: 24,
           letterSpacing: 0.6,
           color: colors.textPrimary,
-          textAlign: 'center'
+          textAlign: 'center',
         },
         headerSpacer: {
           width: 24,
         },
         scrollContent: {
           paddingHorizontal: 24,
-          paddingTop: layout === 'login' ? 20 : 28,
+          paddingTop: 28,
           paddingBottom: 16,
-          alignItems: layout === 'login' ? 'stretch' : 'center',
-        },
-        sectionTitle: {
-          alignSelf: 'stretch',
-          fontFamily: Lexend.regular,
-          fontSize: 20,
-          lineHeight: 42,
-          color: colors.textPrimary,
-          textAlign: 'left',
-          marginTop: 24,
-          marginBottom: 8,
-        },
-        loginBody: {
-          alignSelf: 'stretch',
-          fontFamily: Lexend.regular,
-          fontSize: 16,
-          lineHeight: 24,
-          color: colors.textSecondary,
-          textAlign: 'left',
-          marginTop: 16,
-          marginBottom: 8,
-        },
-        shieldIcon: {
-          width: 96,
-          height: 96,
-          alignSelf: 'center',
-          marginTop: 20,
-          marginBottom: 10,
-        },
-        timerRow: {
-          flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'center',
-          marginTop: 20,
-          marginBottom: 30,
-          gap: 8,
-        },
-        timerIcon: {
-          width: 18,
-          height: 18,
-          tintColor: colors.textSecondary,
-        },
-        timerText: {
-          fontFamily: Lexend.regular,
-          fontSize: 14,
-          lineHeight: 22,
-          color: colors.textSecondary,
         },
         instruction: {
           fontFamily: Lexend.regular,
@@ -395,7 +240,6 @@ function useStyles(colors: ThemeColors, layout: 'login' | 'transfer') {
         pinInputWrap: {
           alignSelf: 'stretch',
           alignItems: 'stretch',
-          marginTop: layout === 'login' ? 20 : 0,
           position: 'relative',
           minHeight: 52,
         },
@@ -427,34 +271,7 @@ function useStyles(colors: ThemeColors, layout: 'login' | 'transfer') {
           color: colors.primary,
           textAlign: 'center',
         },
-        resendWrap: {
-          alignSelf: 'center',
-          marginTop: 20,
-          paddingVertical: 8,
-          paddingHorizontal: 4,
-        },
-        resendLabel: {
-          fontFamily: Lexend.bold,
-          fontSize: 15,
-          lineHeight: 24,
-          textAlign: 'center',
-        },
-        resendLabelEnabled: {
-          color: colors.primary,
-          opacity: 1,
-        },
-        loginBodyLastDigits: {
-          fontFamily: Lexend.regular,
-          fontSize: 15,
-          lineHeight: 24,
-          color: colors.textPrimary,
-          textAlign: 'left',
-        },
-        resendLabelDisabled: {
-          color: colors.textTertiary,
-          opacity: 0.45,
-        },
       }),
-    [colors, layout],
+    [colors],
   );
 }
